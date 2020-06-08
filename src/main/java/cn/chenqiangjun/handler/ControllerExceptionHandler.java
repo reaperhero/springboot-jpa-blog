@@ -21,8 +21,9 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ModelAndView exceptionHander(HttpServletRequest request, Exception e) throws Exception {
 
-        logger.error("Requst URL : {}ï¼ŒException : {}", request.getRequestURL(),e);
+        logger.error("Requst URL : {}，Exception : {}", request.getRequestURL(),e);
 
+        // 自定义错误的交给springboot处理
         if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
             throw e;
         }
